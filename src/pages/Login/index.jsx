@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -14,14 +16,14 @@ export default function Login() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${email ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-gray-300'}`}
+            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${email ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
             placeholder="Email"
           />
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={`w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${password ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-gray-300'}`}
+            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${password ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
             placeholder="Senha"
           />
           <div className="w-full text-right">
@@ -35,7 +37,7 @@ export default function Login() {
           </button>
         </form>
         <p className="text-center text-gray-700 text-sm">
-          Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
+          Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" onClick={(e) => {e.preventDefault(); navigate('/register')}} className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
         </p>
       </div>
     </div>
