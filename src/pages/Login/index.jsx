@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -35,7 +37,7 @@ export default function Login() {
           </button>
         </form>
         <p className="text-center text-gray-700 text-sm">
-          Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
+          Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" onClick={(e) => {e.preventDefault(); navigate('/register')}} className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
         </p>
       </div>
     </div>
