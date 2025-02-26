@@ -50,56 +50,56 @@ export default function Register() {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Nome"
             />
             <input
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Sobrenome"
             />
             <MaskedInput
               mask={cnpjMask}
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="CNPJ"
             />
             <MaskedInput
               mask={phoneMask}
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Telefone"
             />
             <MaskedInput
               mask={mobileMask}
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Celular"
             />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Email"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Senha"
             />
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Confirme sua Senha"
             />
             <div className="col-span-1 md:col-span-2">
