@@ -2,13 +2,14 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputMask from "react-input-mask"
+import MaskedInput from 'react-text-mask';
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [mobile, setMobile] = useState("");  // Renomeei para mobile, já que são campos diferentes.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,6 +22,11 @@ export default function Register() {
     { id: 4, name: "Seu problema resolvido com um clique" },
     { id: 5, name: "Pequenos reparos, grandes soluções" },
   ];
+
+  // Máscaras
+  const cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  const phoneMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  const mobileMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -54,24 +60,24 @@ export default function Register() {
               className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Sobrenome"
             />
-            <input
-              type="text"
+            <MaskedInput
+              mask={cnpjMask}
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
               className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="CNPJ"
             />
-            <input
-              type="(99) 99999-9999"
+            <MaskedInput
+              mask={phoneMask}
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
               className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Telefone"
             />
-            <input
-              type="(99) 99999-9999"
-              value={telephone}
-              onChange={(e) => setTelephone(e.target.value)}
+            <MaskedInput
+              mask={mobileMask}
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
               className="w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Celular"
             />
