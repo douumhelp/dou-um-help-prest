@@ -27,7 +27,7 @@ export default function Login() {
             placeholder="Senha"
           />
           <div className="w-full text-right">
-            <a href="#" className="text-gray-500 text-sm underline">Esqueceu sua senha?</a>
+            <a href="#" onClick={(e) => {e.preventDefault(); navigate('/forgot-password')}}  className="text-gray-500 text-sm underline">Esqueceu sua senha?</a>
           </div>
           <button
             type="submit"
