@@ -2,14 +2,14 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MaskedInput from 'react-text-mask';
+import InputMask from "react-input-mask";
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [telephone, setTelephone] = useState("");
-  const [mobile, setMobile] = useState("");  // Renomeei para mobile, já que são campos diferentes.
+  const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,11 +22,6 @@ export default function Register() {
     { id: 4, name: "Seu problema resolvido com um clique" },
     { id: 5, name: "Pequenos reparos, grandes soluções" },
   ];
-
-  // Máscaras
-  const cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/,  '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
-  const phoneMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  const mobileMask = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -50,56 +45,56 @@ export default function Register() {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Nome"
             />
             <input
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Sobrenome"
             />
-            <MaskedInput
-              mask={cnpjMask}
+            <InputMask
+              mask="99.999.999/9999-99"
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="CNPJ"
             />
-            <MaskedInput
-              mask={phoneMask}
+            <InputMask
+              mask="(99) 9999-9999"
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Telefone"
             />
-            <MaskedInput
-              mask={mobileMask}
+            <InputMask
+              mask="(99) 9 9999-9999"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Celular"
             />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Email"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Senha"
             />
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="area-texto campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Confirme sua Senha"
             />
             <div className="col-span-1 md:col-span-2">
