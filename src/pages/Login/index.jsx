@@ -1,10 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [hashPassword, setPassword] = useState("");
   const navigate = useNavigate();
+  const apiUrl = "http://localhost:3000"
+
+  const handleLogin = async () => {
+    const user = {email, hashPassword}
+
+    try {
+        const response = await axios.post(`${apiUrl}/auth/login`,user)
+        console.log(response.data);
+        
+
+      } catch (err) {
+        console.error("Erro ao fazer login:", err)
+      }
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -21,20 +36,24 @@ export default function Login() {
           />
           <input
             type="password"
-            value={password}
+            value={hashPassword}
             onChange={(e) => setPassword(e.target.value)}
-            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${password ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
+            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${hashPassword ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
             placeholder="Senha"
           />
           <div className="w-full text-right">
             <a href="#" onClick={(e) => {e.preventDefault(); navigate('/forgot-password')}}  className="text-gray-500 text-sm underline">Esqueceu sua senha?</a>
           </div>
           <button
-            type="submit"
-            className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md"
-          >
-            Login
-          </button>
+  type="submit"
+  className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md"
+  onClick={(e) => {
+    e.preventDefault(); // Impede o comportamento padrão do formulário de ser acionado
+    handleLogin();
+  }}
+>
+  Login
+</button>
         </form>
         <p className="text-center text-gray-700 text-sm">
           Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" onClick={(e) => {e.preventDefault(); navigate('/register')}} className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
