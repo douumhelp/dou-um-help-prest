@@ -45,15 +45,15 @@ export default function Login() {
             <a href="#" onClick={(e) => {e.preventDefault(); navigate('/forgot-password')}}  className="text-gray-500 text-sm underline">Esqueceu sua senha?</a>
           </div>
           <button
-  type="submit"
-  className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md"
-  onClick={(e) => {
-    e.preventDefault(); // Impede o comportamento padrão do formulário de ser acionado
-    handleLogin();
-  }}
->
-  Login
-</button>
+            type="submit"
+            className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md"
+            onClick={(e) => {
+              e.preventDefault(); 
+              handleLogin();
+            }}
+          >
+          Login
+          </button>
         </form>
         <p className="text-center text-gray-700 text-sm">
           Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" onClick={(e) => {e.preventDefault(); navigate('/register')}} className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
