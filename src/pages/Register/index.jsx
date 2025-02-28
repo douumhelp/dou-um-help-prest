@@ -13,6 +13,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
 
   const topics = [
@@ -22,6 +23,10 @@ export default function Register() {
     { id: 4, name: "Seu problema resolvido com um clique" },
     { id: 5, name: "Pequenos reparos, grandes soluções" },
   ];
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -100,15 +105,19 @@ export default function Register() {
             <div className="col-span-1 md:col-span-2">
               <button
                 type="submit"
-                className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md"
-              >
-                Cadastrar
+                className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md">Cadastrar
               </button>
+              <div className="flex items-center mt-4">
+                <input id="link-checkbox" type="checkbox" checked={checked} onChange={handleCheckboxChange} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500" />
+                <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-500" >
+                  Eu concordo com os <a href="#" onClick={(e) => {e.preventDefault(); window.open("/terms", "_blank"); }} className="text-yellow-500 underline" > termos e condições</a>
+                </label>
+              </div>
             </div>
           </form>
-          <p className="text-center text-gray-700 text-sm mt-4">
-            Já tem uma conta? <a href="#" onClick={(e) => {e.preventDefault(); navigate('/')}} className="text-yellow-500 font-semibold underline">Faça login aqui!</a>
-          </p>
+          <p className="text-center text-gray-700 text-sm mt-4"> Já tem uma conta?
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }} className="text-yellow-500 font-semibold underline">Faça login aqui!</a>
+          </p>   
         </div>
       </div>
     </div>
