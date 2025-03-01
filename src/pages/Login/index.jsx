@@ -14,10 +14,13 @@ export default function Login() {
     try {
         const response = await axios.post(`${apiUrl}/auth/login`,user)
         console.log(response.data);
-        
+        const token = response.data.token;
+        localStorage.setItem('authToken', token)
+        console.log("Token armazenado:", token)
 
       } catch (err) {
         console.error("Erro ao fazer login:", err)
+        alert("Erro ao realizar login!")
       }
   }
 

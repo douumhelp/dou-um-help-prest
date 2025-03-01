@@ -40,13 +40,18 @@ export default function Register() {
 
     const user = {username, firstName, lastName, email, hashPassword, telephone, cnpj}
 
-    try {
-        const response = await axios.post(`${apiUrl}/auth/register/pj`,user)
-        console.log(response.data);
+    if(hashPassword==confirmPassword){
+      try {
+          const response = await axios.post(`${apiUrl}/auth/register/pj`,user)
+          console.log(response.data);
 
-      } catch (err) {
-        console.error("Erro ao fazer o cadastro:", err)
-      }
+        } catch (err) {
+          console.error("Erro ao fazer o cadastro:", err)
+          alert("Erro ao realizar cadastro!", err)
+        }
+    }else{
+      alert("Senhas divergentes")
+    }
   }
 
   return (
