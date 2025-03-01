@@ -3,18 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputMask from "react-input-mask";
+import axios from "axios";
 
 export default function Register() {
+  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [telephone, setTelephone] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [hashPassword, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
+  const apiUrl = "http://localhost:3000"
+  
   const navigate = useNavigate();
+
 
   const topics = [
     { id: 1, name: "Precisa de ajuda? A gente dá um help!" },
@@ -27,6 +32,22 @@ export default function Register() {
   const handleCheckboxChange = () => {
     setChecked(!checked);
   };
+
+  const handleRegister = async () => {
+    const formattedTelephone = mobile.replace(/\D/g, '');
+    setTelephone("+55"+mobile)
+    setUsername(firstName+lastName)
+
+    const user = {username, firstName, lastName, email, hashPassword, telephone, cnpj}
+
+    try {
+        const response = await axios.post(`${apiUrl}/auth/register/pj`,user)
+        console.log(response.data);
+
+      } catch (err) {
+        console.error("Erro ao fazer o cadastro:", err)
+      }
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
@@ -90,7 +111,7 @@ export default function Register() {
             />
             <input
               type="password"
-              value={password}
+              value={hashPassword}
               onChange={(e) => setPassword(e.target.value)}
               className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Senha"
@@ -105,6 +126,10 @@ export default function Register() {
             <div className="col-span-1 md:col-span-2">
               <button
                 type="submit"
+                onClick={(e) => {
+                  e.preventDefault(); 
+                  handleRegister();
+                }}
                 className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md">Cadastrar
               </button>
               <div className="flex items-center mt-4">
