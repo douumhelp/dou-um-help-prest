@@ -136,6 +136,7 @@ export default function Register() {
                 onClick={(e) => {
                   e.preventDefault(); 
                   handleRegister();
+                  navigate("/categories");
                 }}
                 className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md">Cadastrar
               </button>
