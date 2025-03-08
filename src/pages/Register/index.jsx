@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputMask from "react-input-mask";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -47,10 +49,10 @@ export default function Register() {
 
         } catch (err) {
           console.error("Erro ao fazer o cadastro:", err)
-          alert("Erro ao realizar cadastro!", err)
+          toast.error("Não conseguimos concluir seu cadastro. Verifique as informações e tente novamente.", err)
         }
     }else{
-      alert("Senhas divergentes")
+      toast.error("As senhas digitadas não coincidem. Verifique e tente novamente")
     }
   }
 
@@ -76,56 +78,56 @@ export default function Register() {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Nome"
             />
             <input
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Sobrenome"
             />
             <InputMask
               mask="99.999.999/9999-99"
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="CNPJ"
             />
             <InputMask
               mask="(99) 9999-9999"
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Telefone"
             />
             <InputMask
               mask="(99) 9 9999-9999"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Celular"
             />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Email"
             />
             <input
               type="password"
               value={hashPassword}
               onChange={(e) => setPassword(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Senha"
             />
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="campo-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
+              className="campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 border-gray-300 focus:ring-[#FDE018]"
               placeholder="Confirme sua Senha"
             />
             <div className="col-span-1 md:col-span-2">
@@ -134,6 +136,7 @@ export default function Register() {
                 onClick={(e) => {
                   e.preventDefault(); 
                   handleRegister();
+                  navigate("/categories");
                 }}
                 className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition shadow-md">Cadastrar
               </button>
@@ -150,6 +153,14 @@ export default function Register() {
           </p>   
         </div>
       </div>
+      <ToastContainer 
+          position="top-center" 
+          autoClose={3000}        
+          newestOnTop={false}  
+          rtl={false}             
+          pauseOnFocusLoss={false}
+          draggable={false}    
+        />
     </div>
   );
 }

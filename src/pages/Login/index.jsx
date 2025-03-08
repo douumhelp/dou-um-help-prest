@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -19,8 +20,8 @@ export default function Login() {
         console.log("Token armazenado:", token)
 
       } catch (err) {
-        console.error("Erro ao fazer login:", err)
-        alert("Erro ao realizar login!")
+        console.error("Erro ao realizar login:", err)
+        toast.error("Não conseguimos realizar o login. Verifique seu email e senha, e tente novamente.")
       }
   }
 
@@ -34,14 +35,14 @@ export default function Login() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${email ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
+            className={`campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${email ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
             placeholder="Email"
           />
           <input
             type="password"
             value={hashPassword}
             onChange={(e) => setPassword(e.target.value)}
-            className={`area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${hashPassword ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
+            className={`campo-texto area-texto w-full px-4 py-3 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 ${hashPassword ? 'border-yellow-500 focus:ring-yellow-500' : 'border-gray-300 focus:ring-[#FDE018]'}`}
             placeholder="Senha"
           />
           <div className="w-full text-right">
@@ -62,6 +63,14 @@ export default function Login() {
           Você ainda não tem uma conta no Dou um Help? <p>Não perca tempo, <a href="#" onClick={(e) => {e.preventDefault(); navigate('/register')}} className="text-yellow-500 font-semibold underline">Cadastre-se agora!</a></p>
         </p>
       </div>
+        <ToastContainer 
+          position="top-center" 
+          autoClose={3000}        
+          newestOnTop={false}  
+          rtl={false}             
+          pauseOnFocusLoss={false}
+          draggable={false}    
+        />
     </div>
   );
 }
