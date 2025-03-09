@@ -11,14 +11,9 @@ const navItems = [
 
 const SideBar = () => {
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-200 p-5">
+    <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-200 p-5 overflow-y-auto">
       <div className="py-8 flex justify-center">
-        <img
-          src="/logo.png"
-          alt="Logo"
-          width={150}
-          height={40}
-        />
+        <img src="/logo.png" alt="Logo" width={150} height={40} />
       </div>
       <nav className="mt-6">
         <ul className="space-y-2">
