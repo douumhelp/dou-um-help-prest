@@ -1,12 +1,13 @@
 import { LayoutGrid, Calendar, User, BarChart, Wallet, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { icon: <LayoutGrid className="w-5 h-5" />, name: "Dashboard" },
-  { icon: <Calendar className="w-5 h-5" />, name: "Calendário" },
-  { icon: <User className="w-5 h-5" />, name: "Meu Perfil" },
-  { icon: <BarChart className="w-5 h-5" />, name: "Métricas" },
-  { icon: <Wallet className="w-5 h-5" />, name: "Carteira" },
-  { icon: <MessageCircle className="w-5 h-5" />, name: "Chat" },
+  { icon: <LayoutGrid className="w-5 h-5" />, name: "Dashboard", path: "/" },
+  { icon: <Calendar className="w-5 h-5" />, name: "Calendário", path: "/calendario" },
+  { icon: <User className="w-5 h-5" />, name: "Meu Perfil", path: "/perfil" },
+  { icon: <BarChart className="w-5 h-5" />, name: "Métricas", path: "/metricas" },
+  { icon: <Wallet className="w-5 h-5" />, name: "Carteira", path: "/carteira" },
+  { icon: <MessageCircle className="w-5 h-5" />, name: "Chat", path: "/chat" },
 ];
 
 const SideBar = () => {
@@ -18,9 +19,11 @@ const SideBar = () => {
       <nav className="mt-6">
         <ul className="space-y-2">
           {navItems.map((item, index) => (
-            <li key={index} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100">
-              {item.icon}
-              <span className="text-gray-900 cursor-pointer">{item.name}</span>
+            <li key={index}>
+              <Link to={item.path} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100">
+                {item.icon}
+                <span className="text-gray-900 cursor-pointer">{item.name}</span>
+              </Link>
             </li>
           ))}
         </ul>
