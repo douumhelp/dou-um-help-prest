@@ -43,7 +43,7 @@ export default function UserPerfDrop() {
                 className="flex w-full items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg hover:bg-gray-100"
               >
                 <Edit size={20} />
-                Edit profile
+                Editar perfil
               </button>
             </li>
             <li>
@@ -52,7 +52,7 @@ export default function UserPerfDrop() {
                 className="flex w-full items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg hover:bg-gray-100"
               >
                 <Settings size={20} />
-                Account settings
+                Configurações da Conta
               </button>
             </li>
             <li>
@@ -61,7 +61,7 @@ export default function UserPerfDrop() {
                 className="flex w-full items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg hover:bg-gray-100"
               >
                 <LifeBuoy size={20} />
-                Support
+                Suporte
               </button>
             </li>
           </ul>
@@ -71,7 +71,7 @@ export default function UserPerfDrop() {
             className="flex w-full items-center gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg hover:bg-gray-100"
           >
             <LogOut size={20} />
-            Sign Out
+            Sair
           </button>
         </div>
       )}
