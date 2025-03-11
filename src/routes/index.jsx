@@ -6,6 +6,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import TermsAndConditions from "../pages/Documents/TermsAndConditions";
 import Categories from "../pages/Categories";
 import Home from "../pages/Home"; 
+import Chat from "../pages/Chat";
 
 function RoutesApp() {
     return (
@@ -16,6 +17,7 @@ function RoutesApp() {
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/home" element={<Home />} /> 
+            <Route path="/chat" element={<Chat />} /> 
         </Routes>
     );
 }
