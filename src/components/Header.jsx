@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, Search, Bell, MessageCircle } from "lucide-react";
 import UserPerfDrop from "./UserPerfDrop";
+import NotificationModal from "./NotificationModal";
 
 const Header = ({ onToggle }) => {
   return (
@@ -25,7 +26,7 @@ const Header = ({ onToggle }) => {
 
         <div className="flex items-center gap-4">
           <button className="text-gray-700 hover:bg-gray-100 p-2 rounded-lg">
-            <Bell size={24} />
+            <NotificationModal/>
           </button>
           <button className="text-gray-700 hover:bg-gray-100 p-2 rounded-lg">
             <MessageCircle size={24} />
