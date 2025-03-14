@@ -1,18 +1,18 @@
 import { useState }  from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faSquare } from "@fortawesome/free-regular-svg-icons";
-
-const categories =  [
-    "Serviço Domestico", "Serviços de Sofware", "Serviço online", "Serviço veicular", 
-    "Serviço de Pet", "Serviço humano", "Serviços Comercial", "Outros", "Encanador", 
-    "Programação Front End", "Programador Backend", "Editor de Video", "Editor de Imagem", 
-    "Gestão de Projeto", "Redator", "Mecanico De Carro", "Manobrista", "Eletrica Mecanica", 
-    "Cuidador de Pet", "Hospedagem de Pet", "Vacinação de Pet", "Cuidador de Idosos", 
-    "Cuidador de criança", "Professor Ensino Fundamental I", "Vendedor", "Diarista Comercial", "Segurança"
-  ];
-
+import axios from "axios";
+    
   export default function Categories() {
     const [select, setSelected] = useState([]);
+    const token = localStorage.getItem("token");
+    const apiUrl = 'http://localhost:3000'
+
+    const categories = axios.get(`${apiUrl}/categories`, {
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
+    })
 
     const toggleCategorie = (categorie) => {
         setSelected((prev) => 

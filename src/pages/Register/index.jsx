@@ -18,10 +18,10 @@ export default function Register() {
   const [hashPassword, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
+  const [token, setToken] = useState("");
   const apiUrl = "http://localhost:3000"
   
   const navigate = useNavigate();
-
 
   const topics = [
     { id: 1, name: "Precisa de ajuda? A gente dá um help!" },
@@ -41,12 +41,14 @@ export default function Register() {
     setUsername(firstName+lastName)
 
     const user = {username, firstName, lastName, email, hashPassword, telephone, cnpj}
+    const userLogin = {email, hashPassword}
 
     if(hashPassword==confirmPassword){
       try {
           const response = await axios.post(`${apiUrl}/auth/register/pj`,user)
           console.log(response.data);
-
+          const responseLogin = await axios.post(`${apiUrl}/auth/login`,userLogin)
+          localStorage.setItem('token',responseLogin.data.token)
         } catch (err) {
           console.error("Erro ao fazer o cadastro:", err)
           toast.error("Não conseguimos concluir seu cadastro. Verifique as informações e tente novamente.", err)
